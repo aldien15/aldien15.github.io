@@ -167,15 +167,9 @@ const balasan = async (button, msg = null) => {
                 document.getElementById('idbalasan').value = id;
 
                 BALAS.innerHTML = `
-                <div class="card-body bg-light shadow p-3 my-2 rounded-4">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center">
-                        <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
-                            <strong>${escapeHtml(res.data.nama)}</strong>
-                        </p>
-                        <small class="text-dark m-0 p-0" style="font-size: 0.75rem;">${res.data.created_at}</small>
-                    </div>
-                    <hr class="text-dark my-1">
-                    <p class="text-dark m-0 p-0" style="white-space: pre-line">${escapeHtml(res.data.komentar)}</p>
+                
+                   
+                    <p ${escapeHtml(res.data.komentar)}</p>
                 </div>`;
             }
 
@@ -389,23 +383,8 @@ const innerCard = (comment) => {
 
     comment.forEach((data) => {
         result += `
-        <div class="card-body border-start bg-light py-2 ps-2 pe-0 my-2 ms-2 me-0" id="${data.uuid}">
-            <div class="d-flex flex-wrap justify-content-between align-items-center">
-                <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
-                    <strong>${escapeHtml(data.nama)}</strong>
-                </p>
-                <small class="text-dark m-0 p-0" style="font-size: 0.75rem;">${data.created_at}</small>
-            </div>
-            <hr class="text-dark my-1">
-            <p class="text-dark mt-0 mb-1 mx-0 p-0" style="white-space: pre-line">${escapeHtml(data.komentar)}</p>
-            <div class="d-flex flex-wrap justify-content-between align-items-center">
-                <button style="font-size: 0.8rem;" onclick="balasan(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-3 py-0">Balas</button>
-                <button style="font-size: 0.8rem;" onclick="like(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-2 py-0 px-0">
-                    <div class="d-flex justify-content-start align-items-center">
-                        <p class="my-0 mx-1" data-suka="${data.like.love}">${data.like.love} suka</p>
-                        <i class="py-1 me-1 p-0 ${inTempLike(data.uuid) ? 'fa-solid fa-heart text-danger' : 'fa-regular fa-heart'}"></i>
-                    </div>
-                </button>
+        <div ${data.uuid}">
+
             </div>
             ${innerCard(data.comments)}
         </div>`;
@@ -418,24 +397,12 @@ const renderCard = (data) => {
     const DIV = document.createElement('div');
     DIV.classList.add('mb-3');
     DIV.innerHTML = `
-    <div class="card-body bg-light shadow p-3 m-0 rounded-4" id="${data.uuid}">
-        <div class="d-flex flex-wrap justify-content-between align-items-center">
-            <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
-                <strong class="me-1">${escapeHtml(data.nama)}</strong><i class="fa-solid ${data.hadir ? 'fa-circle-check text-success' : 'fa-circle-xmark text-danger'}"></i>
-            </p>
-            <small class="text-dark m-0 p-0" style="font-size: 0.75rem;">${data.created_at}</small>
-        </div>
-        <hr class="text-dark my-1">
-        <p class="text-dark mt-0 mb-1 mx-0 p-0" style="white-space: pre-line">${escapeHtml(data.komentar)}</p>
-        <div class="d-flex flex-wrap justify-content-between align-items-center">
-            <button style="font-size: 0.8rem;" onclick="balasan(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-3 py-0">Balas</button>
-            <button style="font-size: 0.8rem;" onclick="like(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-2 py-0 px-0">
-                <div class="d-flex justify-content-start align-items-center">
-                    <p class="my-0 mx-1" data-suka="${data.like.love}">${data.like.love} suka</p>
-                    <i class="py-1 me-1 p-0 ${inTempLike(data.uuid) ? 'fa-solid fa-heart text-danger' : 'fa-regular fa-heart'}"></i>
-                </div>
-            </button>
-        </div>
+    
+       
+        
+        
+        
+        
         ${innerCard(data.comments)}
     </div>`;
     return DIV;
@@ -445,19 +412,7 @@ const renderLoading = (num) => {
     let hasil = '';
     for (let index = 0; index < num; index++) {
         hasil += `
-        <div class="mb-3">
-            <div class="card-body bg-light shadow p-3 m-0 rounded-4">
-                <div class="d-flex flex-wrap justify-content-between align-items-center placeholder-glow">
-                    <span class="placeholder bg-secondary col-5"></span>
-                    <span class="placeholder bg-secondary col-3"></span>
-                </div>
-                <hr class="text-dark my-1">
-                <p class="card-text placeholder-glow">
-                    <span class="placeholder bg-secondary col-6"></span>
-                    <span class="placeholder bg-secondary col-5"></span>
-                    <span class="placeholder bg-secondary col-12"></span>
-                </p>
-            </div>
+        
         </div>`;
     }
 
